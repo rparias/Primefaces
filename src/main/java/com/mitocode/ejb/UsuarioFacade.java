@@ -6,9 +6,11 @@
 package com.mitocode.ejb;
 
 import com.mitocode.model.Usuario;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -27,6 +29,24 @@ public class UsuarioFacade extends AbstractFacade<Usuario> implements UsuarioFac
 
     public UsuarioFacade() {
         super(Usuario.class);
+    }
+
+    @Override
+    public Usuario iniciarSesion(Usuario usuario) {
+        String consulta = "FROM Usuario u WHERE u.usuario = ?1 and u.clave = ?2";
+        Query query = em.createQuery(consulta);
+        query.setParameter(1, usuario.getUsuario());
+        query.setParameter(2, usuario.getClave());
+        
+        List<Usuario> usuarios = query.getResultList();
+        
+        if (!usuarios.isEmpty()) {
+            usuario = usuarios.get(0);
+        } else {
+            usuario = null;
+        }
+        
+        return usuario;
     }
     
 }

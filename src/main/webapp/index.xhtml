@@ -8,6 +8,19 @@
     </h:head>
     <h:body>
         <h:form>
+            <p:messages autoUpdate="true" showDetail="true" />
+            <h:panelGrid columns="2">
+                <p:outputLabel for="txtUsuario" value="Usuario "/>
+                <p:inputText id="txtUsuario" value="#{indexBean.usuario.usuario}" required="true"/>
+                
+                <p:outputLabel for="txtClave" value="Clave "/>
+                <p:password id="txtClave" value="#{indexBean.usuario.clave}" required="true"/>
+                
+                <h:column />
+                <p:commandButton icon="ui-icon-key" value="Iniciar sesión" action="#{indexBean.iniciarSesion()}" />
+            </h:panelGrid>
+            
+            <p:separator />
             <p:link value="Crear cuenta" outcome="usuario" />
         </h:form>
     </h:body>

@@ -47,6 +47,20 @@ public class UsuarioController implements Serializable {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Aviso", "Error"));
         }
     }
+    
+    public Usuario iniciarSesion() {
+        
+        Usuario usuario = null;
+        try {
+            
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            
+        }
+        
+        return usuario;
+    }
 
     public Usuario getUsuario() {
         return usuario;
