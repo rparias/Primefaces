@@ -1,0 +1,14 @@
+com\mitocode\model\Telefono.class
+com\mitocode\model\Categoria_.class
+com\mitocode\ejb\AbstractFacade.class
+com\mitocode\ejb\CategoriaFacadeLocal.class
+com\mitocode\model\Usuario.class
+com\mitocode\model\Categoria.class
+com\mitocode\model\Persona_.class
+com\mitocode\model\Telefono_.class
+com\mitocode\model\Nota_.class
+com\mitocode\model\Usuario_.class
+com\mitocode\ejb\CategoriaFacade.class
+com\mitocode\model\Persona.class
+com\mitocode\model\Nota.class
+com\mitocode\controller\CategoriaController.class
