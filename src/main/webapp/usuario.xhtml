@@ -11,7 +11,7 @@
     <body>
         <h:form>
             
-            <p:messages id="mensaje" autoUpdate="false" />
+            <p:messages id="mensaje" autoUpdate="false" severity="info, fatal" showSummary="true" showDetail="true" />
             
             <p:fieldset legend="Datos Personales">
                 <h:panelGrid columns="3" id="pgDatos">
@@ -38,6 +38,14 @@
 
             <p:fieldset legend="Datos de la cuenta">
                 <h:panelGrid columns="3" id="pgCuenta">
+                    <p:outputLabel for="cboTipo" value="Tipo de cuenta:" />
+                    <p:selectOneMenu id="cboTipo" value="#{usuarioBean.usuario.tipo}" required="true"
+                                     requiredMessage="Campo requerido">
+                        <f:selectItem itemValue="A" itemLabel="Administrador" />
+                        <f:selectItem itemValue="O" itemLabel="Operario" />
+                    </p:selectOneMenu>
+                    <p:message for="cboTipo" />
+                    
                     <p:outputLabel for="txtUsuario" value="Usuario:" />
                     <p:inputText id="txtUsuario" value="#{usuarioBean.usuario.usuario}" required="true"
                                  requiredMessage="Campo requerido"/>
@@ -56,7 +64,8 @@
                     <p:message for="clave2" />
                 </h:panelGrid>
                 
-                <p:commandButton icon="ui-icon-check" value="Registrar" update="pgDatos, pgCuenta" />
+                <p:commandButton icon="ui-icon-check" value="Registrar" update="pgDatos, pgCuenta, mensaje" 
+                                 actionListener="#{usuarioBean.registrar()}"/>
             </p:fieldset>
         </h:form>
         

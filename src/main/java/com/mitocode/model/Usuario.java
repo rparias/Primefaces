@@ -6,14 +6,14 @@
 package com.mitocode.model;
 
 import java.io.Serializable;
-import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
@@ -29,10 +29,9 @@ public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "codigo")
-    private Integer codigo;
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "codigo", nullable = false)
+    private Persona codigo;
     @Size(max = 20)
     @Column(name = "usuario")
     private String usuario;
@@ -48,15 +47,15 @@ public class Usuario implements Serializable {
     public Usuario() {
     }
 
-    public Usuario(Integer codigo) {
+    public Usuario(Persona codigo) {
         this.codigo = codigo;
     }
 
-    public Integer getCodigo() {
+    public Persona getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(Integer codigo) {
+    public void setCodigo(Persona codigo) {
         this.codigo = codigo;
     }
 

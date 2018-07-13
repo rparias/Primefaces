@@ -5,11 +5,15 @@
  */
 package com.mitocode.controller;
 
+import com.mitocode.ejb.UsuarioFacadeLocal;
 import com.mitocode.model.Persona;
 import com.mitocode.model.Usuario;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
@@ -20,6 +24,9 @@ import javax.inject.Named;
 @ViewScoped
 public class UsuarioController implements Serializable {
     
+    @Inject
+    private UsuarioFacadeLocal usuarioEJB;
+    
     private Usuario usuario;
     private Persona persona;
     
@@ -27,6 +34,18 @@ public class UsuarioController implements Serializable {
     public void init(){
         usuario = new Usuario();
         persona = new Persona();
+    }
+    
+    public void registrar() {
+        try {
+            this.usuario.setCodigo(persona);
+            usuarioEJB.create(usuario);
+            
+            //mensaje
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Se registró correctamente"));
+        } catch (Exception e) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Aviso", "Error"));
+        }
     }
 
     public Usuario getUsuario() {
