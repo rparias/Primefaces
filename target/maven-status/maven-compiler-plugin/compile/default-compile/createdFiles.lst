@@ -1,6 +1,8 @@
 com\mitocode\ejb\PersonaFacade.class
 com\mitocode\model\Telefono.class
+com\mitocode\controller\PlantillaController.class
 com\mitocode\model\Categoria_.class
+com\mitocode\controller\IndexController.class
 com\mitocode\ejb\AbstractFacade.class
 com\mitocode\ejb\CategoriaFacadeLocal.class
 com\mitocode\model\Usuario.class
