@@ -48,7 +48,7 @@ public class Persona implements Serializable {
     @Column(name = "sexo")
     private String sexo;
     @Column(name = "fechaNacimiento")
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date fechaNacimiento;
     @OneToMany(mappedBy = "persona")
     private List<Telefono> telefonoList;
